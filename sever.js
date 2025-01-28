@@ -2,7 +2,7 @@ const express = require('express');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const cors = require('cors');
 const mongoose = require('mongoose');
-const User = require('./models/User.model.js');
+const User = require('./models/user.model.js');
 const bcrypt = require('bcrypt');
 const UserPreference = require('./models/UserPreference.model.js'); // Adjust path as needed
 const jwt = require('jsonwebtoken');
@@ -36,7 +36,7 @@ const protect = async (req, res, next) => {
           token = req.headers.authorization.split(' ')[1];
 
           // Verify token
-          const decoded = jwt.verify(token, process.env.JWT_SECRET); // Replace with your secret
+          const decoded = jwt.verify(token,"a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2"); // Replace with your secret
 
           // Get user from the token
           req.user = await User.findById(decoded.id).select('-password');
@@ -372,8 +372,8 @@ const transporter = nodemailer.createTransport({
   port: 587,          // or 465 for secure
   secure: false,      // true for 465, false for other ports
   auth: {
-    user: process.env.AUTH_EMAIL,
-    pass: process.env.AUTH_PASS,
+    user: "mouhamedaminkraiem09@gmail.com",
+    pass: "4aBMUyAHQPtWGRLj",
   },
 });
 
@@ -2304,15 +2304,15 @@ app.post('/sendmail', async (req, res) => {
       let transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-              user: process.env.AUTH2_EMAIL,
-              pass: process.env.AUTH2_PASSWORD,
+              user: "mouhamedaminkraiem08@gmail.com",
+              pass: "hpzr tlho zloe cslx",
           },
       });
 
       // Setup email data
       let mailOptions = {
-          from: `"Animo App" <${process.env.AUTH_EMAIL}>`, // sender address
-          to: process.env.AUTH_EMAIL, // receiver (your email)
+          from: `"Animo App" <"mouhamedaminkraiem09@gmail.com">`, // sender address
+          to: "mouhamedaminkraiem09@gmail.com", // receiver (your email)
           subject: 'New Bug Report from Animo App',
           text: message,
           // You can also use HTML:
